@@ -11,4 +11,4 @@ ALTER DATABASE schema_name DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode
 ALTER DATABASE schema_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Build table alter queries for non-utf8mb4_unicode_ci tables
-SELECT CONCAT('ALTER TABLE `', table_schema,'`.`', table_name,'` COLLATE utf8mb4_unicode_ci;') AS query FROM information_schema.tables WHERE TABLE_SCHEMA = schema_name AND table_type = 'BASE TABLE' AND table_collation <> 'utf8mb4_unicode_ci';
+SELECT CONCAT('ALTER TABLE `', table_schema,'`.`', table_name,'`CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;') AS query FROM information_schema.tables WHERE TABLE_SCHEMA = schema_name AND table_type = 'BASE TABLE' AND table_collation <> 'utf8mb4_unicode_ci';
